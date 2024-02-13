@@ -38,10 +38,8 @@ export default function RootLayout({
               footerActionLink: "primary-text-gradient hover:text-primary-500",
             },
           }}>
-          <ThemeProvider>
-            <h1>THis is home page</h1>
-            {children}
-          </ThemeProvider>
+      
+          <ThemeProvider>{children}</ThemeProvider>
         </ClerkProvider>
       </body>
     </html>

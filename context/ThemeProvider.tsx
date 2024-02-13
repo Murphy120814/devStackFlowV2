@@ -17,11 +17,11 @@ export default function ThemeProvider({
   const handleThemeChange = () => {
     if (mode == "dark") {
       setMode("light");
-      document.documentElement.classList.remove("dark");
+      //   document.documentElement.classList.remove("dark");
       document.documentElement.classList.add("light");
     } else {
       setMode("dark");
-      document.documentElement.classList.remove("light");
+      //   document.documentElement.classList.remove("light");
       document.documentElement.classList.add("dark");
     }
   };
