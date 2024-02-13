@@ -2,7 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { DESCRIPTION } from "@/constants/constant";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
-
+import ThemeProvider from "@/context/ThemeProvider";
 import "./globals.css";
 import React from "react";
 const inter = Inter({
@@ -29,18 +29,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        elements: {
-          formButtonPrimary: "primary-gradient",
-          footerActionLink: "primary-text-gradient hover:text-primary-500",
-        },
-      }}>
-      <html lang="en">
-        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <ClerkProvider
+          appearance={{
+            elements: {
+              formButtonPrimary: "primary-gradient",
+              footerActionLink: "primary-text-gradient hover:text-primary-500",
+            },
+          }}>
+          <ThemeProvider>
+            <h1>THis is home page</h1>
+            {children}
+          </ThemeProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
