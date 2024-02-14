@@ -3,6 +3,8 @@ import Link from "next/link";
 import React from "react";
 import { UserButton, SignedIn } from "@clerk/nextjs";
 import Theme from "./Theme";
+import MobileNav from "./MobileNav";
+import GlobalSearch from "../search/GlobalSearch";
 function Navbar() {
   return (
     <nav
@@ -20,7 +22,7 @@ function Navbar() {
           Dev<span className="text-primary-500">StackFlow</span>
         </p>
       </Link>
-      globalSearch
+      <GlobalSearch />
       <div className="flex-between gap-5">
         <Theme />
         <SignedIn>
@@ -36,7 +38,7 @@ function Navbar() {
             }}
           />
         </SignedIn>
-        MobileNav
+        <MobileNav />
       </div>
     </nav>
   );
