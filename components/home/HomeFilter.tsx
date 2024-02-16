@@ -3,7 +3,7 @@ import React from "react";
 import { HomePageFilters } from "@/constants/filtersConstants";
 import { Button } from "@/components/ui/button";
 function HomeFilter() {
-  const active = "newest";
+  const active = "recommended";
   return (
     <div className="mt-10 hidden flex-wrap gap-3 md:flex">
       {HomePageFilters.map((item) => {

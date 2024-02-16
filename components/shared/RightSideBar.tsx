@@ -4,50 +4,50 @@ import Image from "next/image";
 import RenderTags from "@/components/shared/RenderTags";
 const popularTags = [
   {
-    _id: 1,
+    _id: "1",
     name: "javascript",
     totalQuestions: 4,
   },
   {
-    _id: 2,
+    _id: "2",
     name: "javascript",
     totalQuestions: 4,
   },
   {
-    _id: 3,
+    _id: "3",
     name: "ReactJs",
     totalQuestions: 4,
   },
   {
-    _id: 4,
+    _id: "4",
     name: "javascript",
     totalQuestions: 4,
   },
   {
-    _id: 5,
+    _id: "5",
     name: "Redux",
     totalQuestions: 4,
   },
 ];
 const hotQuestions = [
   {
-    _id: 1,
+    _id: "1",
     title: "How do i use express as the custom server in next js?",
   },
   {
-    _id: 2,
+    _id: "2",
     title: "How do i use express as the custom server in next js?",
   },
   {
-    _id: 3,
+    _id: "3",
     title: "How do i use express as the custom server in next js?",
   },
   {
-    _id: 4,
+    _id: "4",
     title: "How do i use express as the custom server in next js?",
   },
   {
-    _id: 5,
+    _id: "5",
     title: "How do i use express as the custom server in next js?",
   },
 ];

@@ -4,6 +4,86 @@ import LocalSearchBar from "@/components/shared/LocalSearchBar";
 import { HomePageFilters } from "@/constants/filtersConstants";
 import Filter from "@/components/shared/Filter";
 import HomeFilter from "@/components/home/HomeFilter";
+import QuestionCard from "@/components/shared/QuestionCard";
+import NoResult from "@/components/shared/NoResult";
+
+const questions = [
+  {
+    _id: "1",
+    title: "Cascading deletes in SQLAlchemy?",
+    tags: [
+      {
+        _id: "1",
+        name: "javascript",
+        totalQuestions: 4,
+      },
+      {
+        _id: "2",
+        name: "javascript",
+        totalQuestions: 4,
+      },
+    ],
+    author: {
+      _id: "author1",
+      name: "John Doe",
+      picture: "path/to/picture.jpg",
+    },
+    upvotes: 10,
+    views: 100,
+    answers: [],
+    createdAt: new Date("2021-09-01T12:00:00.000Z"),
+  },
+  {
+    _id: "2",
+    title: "How to create SQL in SQLAlchemy?",
+    tags: [
+      {
+        _id: "1",
+        name: "javascript",
+        totalQuestions: 4,
+      },
+      {
+        _id: "2",
+        name: "javascript",
+        totalQuestions: 4,
+      },
+    ],
+    author: {
+      _id: "author2",
+      name: "John Doe",
+      picture: "path/to/picture.jpg",
+    },
+    upvotes: 10,
+    views: 100,
+    answers: [],
+    createdAt: new Date("2021-09-01T12:00:00.000Z"),
+  },
+  {
+    _id: "3",
+    title: "How to learn frontend development?",
+    tags: [
+      {
+        _id: "1",
+        name: "javascript",
+        totalQuestions: 4,
+      },
+      {
+        _id: "2",
+        name: "javascript",
+        totalQuestions: 4,
+      },
+    ],
+    author: {
+      _id: "author3",
+      name: "John Doe",
+      picture: "path/to/picture.jpg",
+    },
+    upvotes: 10,
+    views: 100,
+    answers: [],
+    createdAt: new Date("2021-09-01T12:00:00.000Z"),
+  },
+];
 export default function Home() {
   return (
     <>
@@ -30,6 +110,34 @@ export default function Home() {
         />
       </div>
       <HomeFilter />
+      <section className="mt-10 flex flex-col gap-6">
+        {questions.length > 0 ? (
+          questions.map((question) => {
+            return (
+              <QuestionCard
+                key={question._id}
+                _id={question._id}
+                title={question.title}
+                tags={question.tags}
+                author={question.author}
+                upvotes={question.upvotes}
+                views={question.views}
+                answers={question.answers}
+                createdAt={question.createdAt}
+              />
+            );
+          })
+        ) : (
+          <NoResult
+            title="There is no questions to show!!"
+            description={`Be the first to break the silence! 🚀 Ask a Question and kickstart the
+              discussion. our query could be the next big thing others learn from. Get
+        involved! 💡`}
+            link="/ask-questions"
+            buttonText="Ask a Question"
+          />
+        )}
+      </section>
     </>
   );
 }

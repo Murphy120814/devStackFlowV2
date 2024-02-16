@@ -8,6 +8,21 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+  /* Width of the scrollbar */
+  @apply bg-light-800 dark:bg-dark-400;
+  /* Tailwind class for the background color */
+}
+
+/* This targets the scrollbar's thumb (the part you drag) */
+::-webkit-scrollbar-thumb {
+  @apply bg-[#ff7000] rounded-full;
+  /* Tailwind classes for color and rounded corners */
+}
+
+
+
 @layer utilities {
   .flex-center {
     @apply flex justify-center items-center;
@@ -46,11 +61,9 @@ body {
   }
 
   .dark-gradient {
-    background: linear-gradient(
-      232deg,
-      rgba(23, 28, 35, 0.41) 0%,
-      rgba(19, 22, 28, 0.7) 100%
-    );
+    background: linear-gradient(232deg,
+        rgba(23, 28, 35, 0.41) 0%,
+        rgba(19, 22, 28, 0.7) 100%);
   }
 
   .tab {
@@ -63,16 +76,13 @@ body {
 }
 
 .active-theme {
-  filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)
-    brightness(104%) contrast(106%) !important;
+  filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg) brightness(104%) contrast(106%) !important;
 }
 
 .light-gradient {
-  background: linear-gradient(
-    132deg,
-    rgba(247, 249, 255, 0.5) 0%,
-    rgba(229, 237, 255, 0.25) 100%
-  );
+  background: linear-gradient(132deg,
+      rgba(247, 249, 255, 0.5) 0%,
+      rgba(229, 237, 255, 0.25) 100%);
 }
 
 .primary-text-gradient {
@@ -140,6 +150,7 @@ code {
 
   color: inherit !important;
 }
+
 /* Markdown End */
 
 /* Clerk */
@@ -160,6 +171,8 @@ code {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
