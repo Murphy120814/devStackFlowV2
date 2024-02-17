@@ -6,6 +6,7 @@
     "prettier"
   ],
   "rules": {
+    "camelcase": 0,
     "no-multiple-empty-lines": [
       "error",
       {
@@ -14,7 +15,7 @@
       }
     ],
     "object-curly-newline": 0,
-
+    "tailwindcss/no-custom-classname": 0,
     "eqeqeq": 0,
 
     "react/self-closing-comp": [
