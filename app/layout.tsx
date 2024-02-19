@@ -1,5 +1,6 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import { DESCRIPTION } from "@/constants/constant";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import ThemeProvider from "@/context/ThemeProvider";
@@ -39,6 +40,7 @@ export default function RootLayout({
             },
           }}>
           <ThemeProvider>{children}</ThemeProvider>
+          <SpeedInsights />
         </ClerkProvider>
       </body>
     </html>
