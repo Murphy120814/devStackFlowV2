@@ -6,6 +6,7 @@
     "prettier"
   ],
   "rules": {
+    "camelcase": 0,
     "no-multiple-empty-lines": [
       "error",
       {
@@ -14,6 +15,9 @@
       }
     ],
     "object-curly-newline": 0,
+    "tailwindcss/no-custom-classname": 0,
+    "tailwindcss/enforces-shorthand": 0,
+    "tailwindcss/classnames-order": 0,
 
     "eqeqeq": 0,
 
