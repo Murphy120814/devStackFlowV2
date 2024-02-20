@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
+import { createQuestion } from "@/lib/actions/question.action";
 const type: any = "create";
 function Question() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,13 +63,14 @@ function Question() {
     }
   };
 
-  function onSubmit(values: z.infer<typeof questionSchema>) {
+  async function onSubmit(values: z.infer<typeof questionSchema>) {
     console.log(values);
     setIsSubmitting(true);
     try {
       // Make async call to create a question
       // contain all form data
       // navigate home
+      await createQuestion({});
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -118,6 +119,8 @@ function Question() {
                     // @ts-ignore
                     (editorRef.current = editor)
                   }
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   initialValue=""
                   init={{
                     height: 350,
