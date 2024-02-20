@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { z } from "zod";
 import { questionSchema } from "@/lib/validations";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -19,10 +20,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { createQuestion } from "@/lib/actions/question.action";
+interface Props {
+  mongoUserId: string;
+}
 
 const type: any = "create";
-function Question() {
+function Question({ mongoUserId }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
+  // const pathname = usePathname();
 
   const editorRef = useRef(null);
   const handleTagRemove = (tag: string, field: any) => {
@@ -63,13 +70,20 @@ function Question() {
     }
   };
 
-  function onSubmit(values: z.infer<typeof questionSchema>) {
+  async function onSubmit(values: z.infer<typeof questionSchema>) {
     console.log(values);
     setIsSubmitting(true);
     try {
       // Make async call to create a question
       // contain all form data
       // navigate home
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+      });
+      router.push("/");
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -118,6 +132,8 @@ function Question() {
                     // @ts-ignore
                     (editorRef.current = editor)
                   }
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   initialValue=""
                   init={{
                     height: 350,
