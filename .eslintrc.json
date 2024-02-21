@@ -20,7 +20,7 @@
     "tailwindcss/classnames-order": 0,
 
     "eqeqeq": 0,
-
+    "no-unused-vars": 0,
     "react/self-closing-comp": [
       "error",
       {

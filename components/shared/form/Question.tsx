@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { z } from "zod";
 import { questionSchema } from "@/lib/validations";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -29,7 +29,7 @@ const type: any = "create";
 function Question({ mongoUserId }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
-  // const pathname = usePathname();
+  const pathname = usePathname();
 
   const editorRef = useRef(null);
   const handleTagRemove = (tag: string, field: any) => {
@@ -82,6 +82,7 @@ function Question({ mongoUserId }: Props) {
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mongoUserId),
+        path: pathname,
       });
       router.push("/");
     } catch (error) {

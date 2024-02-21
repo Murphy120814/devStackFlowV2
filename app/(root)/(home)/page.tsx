@@ -6,85 +6,14 @@ import Filter from "@/components/shared/Filter";
 import HomeFilter from "@/components/home/HomeFilter";
 import QuestionCard from "@/components/shared/QuestionCard";
 import NoResult from "@/components/shared/NoResult";
+import { getQuestions } from "@/lib/actions/question.action";
 
-const questions = [
-  {
-    _id: "1",
-    title: "Cascading deletes in SQLAlchemy?",
-    tags: [
-      {
-        _id: "1",
-        name: "javascript",
-        totalQuestions: 4,
-      },
-      {
-        _id: "2",
-        name: "javascript",
-        totalQuestions: 4,
-      },
-    ],
-    author: {
-      _id: "author1",
-      name: "John Doe",
-      picture: "path/to/picture.jpg",
-    },
-    upvotes: 10,
-    views: 100,
-    answers: [],
-    createdAt: new Date("2021-09-01T12:00:00.000Z"),
-  },
-  {
-    _id: "2",
-    title: "How to create SQL in SQLAlchemy?",
-    tags: [
-      {
-        _id: "1",
-        name: "javascript",
-        totalQuestions: 4,
-      },
-      {
-        _id: "2",
-        name: "javascript",
-        totalQuestions: 4,
-      },
-    ],
-    author: {
-      _id: "author2",
-      name: "John Doe",
-      picture: "path/to/picture.jpg",
-    },
-    upvotes: 10,
-    views: 100,
-    answers: [],
-    createdAt: new Date("2021-09-01T12:00:00.000Z"),
-  },
-  {
-    _id: "3",
-    title: "How to learn frontend development?",
-    tags: [
-      {
-        _id: "1",
-        name: "javascript",
-        totalQuestions: 4,
-      },
-      {
-        _id: "2",
-        name: "javascript",
-        totalQuestions: 4,
-      },
-    ],
-    author: {
-      _id: "author3",
-      name: "John Doe",
-      picture: "path/to/picture.jpg",
-    },
-    upvotes: 10,
-    views: 100,
-    answers: [],
-    createdAt: new Date("2021-09-01T12:00:00.000Z"),
-  },
-];
-export default function Home() {
+export default async function Home() {
+  const result = await getQuestions({});
+  if (!result) {
+    return;
+  }
+
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -111,8 +40,8 @@ export default function Home() {
       </div>
       <HomeFilter />
       <section className="mt-10 flex flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((question) => {
+        {result.questions.length > 0 ? (
+          result?.questions.map((question) => {
             return (
               <QuestionCard
                 key={question._id}
