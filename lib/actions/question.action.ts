@@ -3,7 +3,7 @@ import { connectToDataBase } from "../mongoose";
 import Question from "@/database/question.model";
 import Tag from "@/database/tag.model";
 export async function createQuestion(params: any) {
-  const { title, content, tags, author } = params;
+  const { title, content, tags, author } = params; // have to add path
   try {
     connectToDataBase();
     const question = await Question.create({
