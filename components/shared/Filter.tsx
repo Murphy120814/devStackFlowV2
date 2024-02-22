@@ -31,7 +31,10 @@ function Filter({ filters, otherClasses, containerClasses }: Props) {
           <SelectGroup>
             {filters.map((item) => {
               return (
-                <SelectItem value={item.value} key={item.value}>
+                <SelectItem
+                  className="text-dark500_light700 cursor-pointer hover:background-light800_dark300 transition-all ease-in-out "
+                  value={item.value}
+                  key={item.value}>
                   {item.name}
                 </SelectItem>
               );
