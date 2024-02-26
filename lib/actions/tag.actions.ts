@@ -1,7 +1,8 @@
 "use server";
 import { connectToDataBase } from "../mongoose";
-import { GetTopInteractedTagsParams } from "./shared.types";
+import { GetTopInteractedTagsParams, GetAllTagsParams } from "./shared.types";
 import User from "@/database/user.model";
+import Tag from "@/database/tag.model";
 export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
   const { userId, limit = 3 } = params;
   const user = await User.findById(userId);
@@ -18,5 +19,16 @@ export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
     ];
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function getAllTags(params: GetAllTagsParams) {
+  try {
+    connectToDataBase();
+    const tags = await Tag.find({});
+    return { tags };
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 }
