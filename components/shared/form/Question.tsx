@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+import { useTheme } from "@/context/ThemeProvider";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { z } from "zod";
@@ -29,6 +30,7 @@ const type: any = "create";
 function Question({ mongoUserId }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+  const { mode } = useTheme();
   const pathname = usePathname();
 
   const editorRef = useRef(null);
@@ -165,6 +167,8 @@ function Question({ mongoUserId }: Props) {
                       "codesample | bold italic forecolor | alignleft aligncenter " +
                       "alignright alignjustify | bullist numlist outdent indent | ",
                     content_style: "body { font-family:Inter; font-size:16px }",
+                    skin: mode === "dark" ? "oxide-dark" : "oxide",
+                    content_css: mode === "dark" ? "dark" : "light",
                   }}
                 />
               </FormControl>
